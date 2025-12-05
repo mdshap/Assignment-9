@@ -34,8 +34,8 @@ const PopularGames = () => {
   }
 
   return (
-    <div className="">
-      {showAll ? <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
+    <div className="mt-10">
+      {showAll ? <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
         {games
           .map((game) => (
             <GameCard key={game.id} game={game} />

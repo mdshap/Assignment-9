@@ -137,14 +137,17 @@ const Navbar = () => {
         <div className="navbar-end">
           {user ? (
             <div className="flex gap-2 justify-center items-center">
+              <Link to="/profile">
               <img
-                className="rounded-full object-cover w-10 h-10"
+    
+                className="rounded-full cursor-pointer object-cover w-10 h-10"
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content={user?.displayName}
                 src={`${user?.photoURL}`}
                 alt="user_img"
                 title={`User: ${user?.displayName}`}
               />
+              </Link>
               <a
                 onClick={handleSignOut}
                 className="btn btn-secondary hover:bg-secondary text-[11px] md:text-[14px] hover:text-white bg-transparent text-secondary">

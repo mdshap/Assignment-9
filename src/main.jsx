@@ -12,6 +12,7 @@ import Profile from "./components/Pages/UserManagement/Profile.jsx";
 import AuthProvider from "./components/Authentication/AuthProvider.jsx";
 import ErrorPage from "./components/Pages/ErrorPage.jsx";
 import AllGames from "./components/Pages/Game/AllGames.jsx";
+import UserInformation from "./components/Pages/UserManagement/UserInformation.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -43,10 +44,10 @@ const routes = createBrowserRouter([
         ),
       },
       {
-        path: "user-profile",
+        path: "profile",
         element: (
           <PrivateRoute>
-            <Profile />
+            <UserInformation/>
           </PrivateRoute>
         ),
       },
