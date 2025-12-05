@@ -73,17 +73,17 @@ const Register = () => {
 
   return (
     <div
-      className="hero min-h-screen bg-cover bg-center"
+      className="hero min-h-screen w-full bg-cover bg-center"
       style={{
         backgroundImage: "url('fifa.png')",
       }}>
       <div className="hero-overlay "></div>
-      <div className="hero-content w-full max-w-5xl mx-auto flex-col lg:flex-row-reverse gap-10 px-6 py-12">
+      <div className="hero-content w-full   flex-col-reverse lg:flex-row gap-10 px-6 py-12">
         
 
-        <div className="text-center lg:text-left max-w-2xl bg-black/20 p-4 rounded-2xl">
+        <div className="text-center lg:text-left max-w-4xl bg-black/20 p-4 rounded-2xl">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight mb-4">
-            Join the <span className="text-green-500">Game Zone</span>
+            Join the <span className="text-blue-500">Game Zone</span>
           </h1>
           <p className="mt-4 text-md md:text-2xl text-white max-w-2xl">
   Download the latest PC games instantly — fast installers, verified builds,
@@ -92,9 +92,9 @@ const Register = () => {
 
         </div>
 
-        <div className="card w-full max-w-md bg-/40 backdrop-blur-sm rounded-2xl shadow-2xl ml-40 border border-white/40">
+        <div className="card w-full max-w-md bg-/40 backdrop-blur-sm rounded-2xl shadow-2xl md:ml-40 border">
           <div className="card-body p-8">
-            <h2 className="text-xl md:text-3xl font-bold text-green-500 mb-2">
+            <h2 className="text-xl md:text-3xl font-bold text-blue-600 mb-2">
               Register now!
             </h2>
 
@@ -158,7 +158,7 @@ const Register = () => {
                 <div className="text-red-600 text-center">{errorPass}</div>
               </div>
 
-              <button className="w-full px-4 py-2 rounded-lg bg-green-600 text-white font-semibold shadow hover:scale-[1.01] transition">
+              <button className="w-full px-4 py-2 rounded-lg bg-blue-600 text-white font-semibold shadow hover:scale-[1.01] transition">
                 Create Account
               </button>
 

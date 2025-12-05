@@ -10,7 +10,8 @@
 }
 
 .active{
-    @apply bg-primary
+    @apply bg-blue-700
     px-4
     font-bold
+    text-white
 }

@@ -38,7 +38,7 @@ const PopularGames = () => {
   }
 
   return (
-    <div>
+    <div className="">
 
       <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
         {games.slice(0,3).map((game) => (

@@ -32,7 +32,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/all-books"
+          to="/all-games"
           data-tooltip-id="my-tooltip"
           data-tooltip-content="All available books in the website">
           All Games
@@ -71,7 +71,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <div className="navbar min-h-20 sm:min-h-0 bg-base-100 max-w-[1600px] mx-auto shadow-sm">
+      <div className="navbar sm:min-h-0 bg-base-100 max-w-[1600px] mx-auto shadow-sm">
         <div className="navbar-start px-2 sm:px-6 ">
           <div
             className="dropdown"
@@ -121,11 +121,12 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
+
           <a
-            className="btn btn-ghost text-lg sm:text-xl font-bold hover:bg-transparent hover:border-0 flex items-center"
+            className="btn btn-ghost text-lg sm:text-2xl font-bold hover:bg-transparent hover:border-0 flex items-center"
             href="/">
-            <FaBookOpen></FaBookOpen>
-            Books<span className="text-secondary">Haven</span>
+            <FaBookOpen className="text-secondary"></FaBookOpen>
+            Game<span className="text-secondary">Hub</span>
           </a>
         </div>
 
@@ -153,7 +154,7 @@ const Navbar = () => {
           ) : (
             <div className="flex gap-2">
               <Link
-                className="btn px-2 h-8 sm:h-10 sm:px-4 text-[10px] text-white md:text-[14px] btn-secondary"
+                className="btn px-2 h-8 sm:h-10 sm:px-4 text-[10px] text-white md:text-[14px] bg-secondary"
                 to="/login">
                 Login <FaUser />
               </Link>
