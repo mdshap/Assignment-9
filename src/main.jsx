@@ -9,6 +9,9 @@ import Home from "./components/Pages/Home/Home.jsx";
 import PrivateRoute from "./components/Privateroute/PrivateRoute.jsx";
 import GameDetails from "./components/Pages/Game/GameDetails.jsx";
 import Profile from "./components/Pages/UserManagement/Profile.jsx";
+import AuthProvider from "./components/Authentication/AuthProvider.jsx";
+import ErrorPage from "./components/Pages/ErrorPage.jsx";
+import AllGames from "./components/Pages/Game/AllGames.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -28,6 +31,10 @@ const routes = createBrowserRouter([
         Component: Register,
       },
       {
+        path: "all-games",
+        Component: AllGames
+      },
+      {
         path: "game-details/:id",
         element: (
           <PrivateRoute>
@@ -43,11 +50,18 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+    path: '*',
+    Component: ErrorPage
+
+  },
     ],
   },
 ]);
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={routes} />
+    <AuthProvider>
+      <RouterProvider router={routes} />
+    </AuthProvider>
   </StrictMode>
 );

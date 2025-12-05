@@ -1,0 +1,102 @@
+[
+  {
+    "id": "1",
+    "title": "Player Unknown's Battlegrounds: PUBG",
+    "coverPhoto": "https://upload.wikimedia.org/wikipedia/en/6/6e/PUBG_Box_art.jpg",
+    "category": "Battle Royale / FPS",
+    "downloadLink": "https://www.pubgmobile.com/en-US/home.shtml",
+    "description": "PUBG is a tactical battle royale where 100 players fight to survive across massive maps using realistic weapons, vehicles, and strategy-driven combat.",
+    "ratings": "4.5",
+    "developer": "Krafton"
+  },
+  {
+    "id": "2",
+    "title": "Cyberpunk 2077",
+    "coverPhoto": "https://upload.wikimedia.org/wikipedia/en/9/9f/Cyberpunk_2077_box_art.jpg",
+    "category": "RPG / Open World",
+    "downloadLink": "https://www.cyberpunk.net/",
+    "description": "Cyberpunk 2077 is a futuristic open-world RPG set in Night City, offering deep storytelling, high-tech combat, cybernetic upgrades, and immersive exploration.",
+    "ratings": "4.6",
+    "developer": "CD Projekt Red"
+  },
+  {
+    "id": "3",
+    "title": "Minecraft",
+    "coverPhoto": "https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png",
+    "category": "Sandbox / Survival",
+    "downloadLink": "https://www.minecraft.net/en-us/download",
+    "description": "Minecraft is a block-building survival sandbox where players craft, explore, and build limitless worlds—solo or with friends across multiple modes.",
+    "ratings": "4.8",
+    "developer": "Mojang Studios"
+  },
+  {
+    "id": "4",
+    "title": "Asphalt 9: Legends",
+    "coverPhoto": "https://upload.wikimedia.org/wikipedia/en/2/2e/Asphalt_9_Icon.png",
+    "category": "Racing",
+    "downloadLink": "https://asphaltlegends.com/",
+    "description": "Asphalt 9: Legends delivers high-speed arcade racing with realistic graphics, nitro boosts, customizable hypercars, and intense multiplayer action.",
+    "ratings": "4.4",
+    "developer": "Gameloft"
+  },
+  {
+    "id": "5",
+    "title": "EA Sports FC 25 (FIFA 2025)",
+    "coverPhoto": "https://upload.wikimedia.org/wikipedia/commons/8/8f/EA_Sports_FC_logo.svg",
+    "category": "Sports / Football",
+    "downloadLink": "https://www.ea.com/games/ea-sports-fc",
+    "description": "EA Sports FC 25 continues the legacy of FIFA with realistic gameplay, career modes, Ultimate Team features, and authentic club licenses.",
+    "ratings": "4.3",
+    "developer": "EA Sports"
+  },
+  {
+    "id": "6",
+    "title": "Call of Duty: Warzone",
+    "coverPhoto": "https://upload.wikimedia.org/wikipedia/en/5/5e/Call_of_Duty_Warzone_cover.jpg",
+    "category": "Battle Royale / FPS",
+    "downloadLink": "https://www.callofduty.com/warzone",
+    "description": "Warzone is a fast-paced battle royale featuring high-end gunplay, vehicles, tactical combat, and cross-platform multiplayer warfare.",
+    "ratings": "4.5",
+    "developer": "Activision"
+  },
+  {
+    "id": "7",
+    "title": "Grand Theft Auto V",
+    "coverPhoto": "https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png",
+    "category": "Open World / Action",
+    "downloadLink": "https://www.rockstargames.com/games/V",
+    "description": "GTA V is an open-world action game featuring three protagonists, massive city exploration, intense missions, and GTA Online multiplayer.",
+    "ratings": "4.9",
+    "developer": "Rockstar Games"
+  },
+  {
+    "id": "8",
+    "title": "Fortnite",
+    "coverPhoto": "https://upload.wikimedia.org/wikipedia/en/a/a7/Fortnite_Save_The_World.jpg",
+    "category": "Battle Royale / Action",
+    "downloadLink": "https://www.fortnite.com/",
+    "description": "Fortnite offers fast-paced building mechanics, vibrant battle royale combat, live events, and a constantly evolving world.",
+    "ratings": "4.4",
+    "developer": "Epic Games"
+  },
+  {
+    "id": "9",
+    "title": "Valorant",
+    "coverPhoto": "https://upload.wikimedia.org/wikipedia/en/5/5f/Valorant_cover_art.jpg",
+    "category": "FPS / Tactical Shooter",
+    "downloadLink": "https://playvalorant.com/",
+    "description": "Valorant is a 5v5 tactical shooter combining precise gunplay, unique agent abilities, and competitive ranked gameplay.",
+    "ratings": "4.7",
+    "developer": "Riot Games"
+  },
+  {
+    "id": "10",
+    "title": "Red Dead Redemption 2",
+    "coverPhoto": "https://upload.wikimedia.org/wikipedia/en/4/44/Red_Dead_Redemption_II.jpg",
+    "category": "Open World / Adventure",
+    "downloadLink": "https://www.rockstargames.com/reddeadredemption2",
+    "description": "RDR2 is a cinematic open-world adventure set in the Wild West, known for emotional storytelling, exploration, and detailed environments.",
+    "ratings": "4.9",
+    "developer": "Rockstar Games"
+  }
+]

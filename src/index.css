@@ -10,5 +10,7 @@
 }
 
 .active{
-    background-color: cyan;
+    @apply bg-primary
+    px-4
+    font-bold
 }
