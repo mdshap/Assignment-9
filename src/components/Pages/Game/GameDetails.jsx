@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Loader from "../../Loader";
+import {motion, AnimatePresence} from "framer-motion"
 
 const GameDetails = () => {
-
   const { id } = useParams();
   const [game, setGame] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -21,7 +21,8 @@ const GameDetails = () => {
           setNotFound(true);
           setGame(null);
         } else {
-          found._numericRating = Number(found.ratings) || Number(found.rating) || 0;
+          found._numericRating =
+            Number(found.ratings) || Number(found.rating) || 0;
           setGame(found);
           setNotFound(false);
         }
@@ -37,12 +38,13 @@ const GameDetails = () => {
   if (loading) return <Loader />;
 
   if (notFound)
-
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-semibold mb-2">Game not found</h2>
-          <p className="text-sm text-gray-500">We couldn't find the game you're looking for.</p>
+          <p className="text-sm text-gray-500">
+            We couldn't find the game you're looking for.
+          </p>
         </div>
       </div>
     );
@@ -56,6 +58,17 @@ const GameDetails = () => {
   return (
     <div className="min-h-screen md:py-12">
       <div className="max-w-7xl mx-auto px-0 md:px-6 lg:px-8">
+        <AnimatePresence>
+        <motion.div
+      animate={{ rotate: 360 }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+                duration: 0.8,
+                delay: 0.5,
+                ease: [0, 0.71, 0.2, 1.01],
+            }}
+      >
         <div className="bg-transparent md:rounded-2xl shadow-xl overflow-hidden">
           <div className="grid grid-cols-1 place-content-center md:grid-cols-3 gap-6 p-6 md:p-8">
             <div className="md:col-span-1 flex items-start">
@@ -90,17 +103,28 @@ const GameDetails = () => {
                 <div className="inline-flex items-center gap-1 text-sm">
                   <div className="flex items-center">
                     {Array.from({ length: fullStars }).map((_, i) => (
-                      <svg key={`f-${i}`} className="w-4 h-4 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                      <svg
+                        key={`f-${i}`}
+                        className="w-4 h-4 text-yellow-400"
+                        viewBox="0 0 20 20"
+                        fill="currentColor">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.37 2.45a1 1 0 00-.364 1.118l1.287 3.955c.3.921-.755 1.688-1.538 1.118l-3.37-2.45a1 1 0 00-1.175 0l-3.37 2.45c-.783.57-1.838-.197-1.538-1.118l1.287-3.955a1 1 0 00-.364-1.118L2.063 9.382c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.955z" />
                       </svg>
                     ))}
                     {halfStar && (
-                      <svg className="w-4 h-4 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                      <svg
+                        className="w-4 h-4 text-yellow-400"
+                        viewBox="0 0 20 20"
+                        fill="currentColor">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.37 2.45a1 1 0 00-.364 1.118l1.287 3.955c.3.921-.755 1.688-1.538 1.118l-3.37-2.45a1 1 0 00-1.175 0l-3.37 2.45c-.783.57-1.838-.197-1.538-1.118l1.287-3.955a1 1 0 00-.364-1.118L2.063 9.382c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.955z" />
                       </svg>
                     )}
                     {Array.from({ length: emptyStars }).map((_, i) => (
-                      <svg key={`e-${i}`} className="w-4 h-4 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                      <svg
+                        key={`e-${i}`}
+                        className="w-4 h-4 text-gray-300"
+                        viewBox="0 0 20 20"
+                        fill="currentColor">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.37 2.45a1 1 0 00-.364 1.118l1.287 3.955c.3.921-.755 1.688-1.538 1.118l-3.37-2.45a1 1 0 00-1.175 0l-3.37 2.45c-.783.57-1.838-.197-1.538-1.118l1.287-3.955a1 1 0 00-.364-1.118L2.063 9.382c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.955z" />
                       </svg>
                     ))}
@@ -117,14 +141,18 @@ const GameDetails = () => {
 
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                  <div className="text-xs text-gray-500 dark:text-gray-300">Genre</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-300">
+                    Genre
+                  </div>
                   <div className="mt-1 font-medium text-gray-800 dark:text-gray-100">
                     {game.category}
                   </div>
                 </div>
 
                 <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                  <div className="text-xs text-gray-500 dark:text-gray-300">Developer</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-300">
+                    Developer
+                  </div>
                   <div className="mt-1 font-medium text-gray-800 dark:text-gray-100">
                     {game.developer}
                   </div>
@@ -135,8 +163,7 @@ const GameDetails = () => {
                     href={game.downloadLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-block px-6 py-3 bg-secondary text-white rounded-md"
-                  >
+                    className="inline-block px-6 py-3 bg-secondary text-white rounded-md">
                     Download / Visit Official Page
                   </a>
                 </div>
@@ -144,7 +171,10 @@ const GameDetails = () => {
             </div>
           </div>
         </div>
-      </div> 
+        </motion.div>
+        </AnimatePresence>
+      </div>
+
     </div>
   );
 };

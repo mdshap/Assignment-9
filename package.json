@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.1.17",
     "carousel": "^0.0.3",
     "firebase": "^12.6.0",
+    "motion": "^12.23.25",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hot-toast": "^2.6.0",

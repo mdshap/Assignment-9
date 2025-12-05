@@ -4,7 +4,9 @@ import { AuthContext } from "../../Authentication/AuthContext";
 import Loader from "../../Loader";
 
 
-const TableBody = ({ book, count }) => {
+
+
+const TableBody = ({ game, count }) => {
     const {loading} = use(AuthContext)
 
     if(loading){
@@ -16,6 +18,7 @@ const TableBody = ({ book, count }) => {
         )
     }
   return (
+
     <tbody>
 
       <tr className="">
@@ -26,39 +29,40 @@ const TableBody = ({ book, count }) => {
             <div className="avatar border-2">
               <div className="h-25 w-15 md:h-45 md:w-30">
                 <img
-                  src={book.coverImage}
-                  alt="book image"
+                  src={game.coverPhoto}
+                  alt="game image"
                 />
               </div>
             </div>
             <div className="">
-              <div className="font-bold text-sm md:text-xl ">{book.title}</div>
-              <div className="text-sm opacity-50">{book.author}</div>
+              <div className="font-bold text-sm md:text-xl ">{game.title}</div>
+              <div className="text-sm opacity-50">{game.author}</div>
             </div>
           </div>
         </td>
         
-        <td className="text-yellow-600 font-bold text-md md:text-lg">{book.rating}</td>
+        <td className="text-yellow-600 font-bold text-md md:text-lg">{game.ratings}</td>
         <td className=" hidden sm:inline text-md  md:text-lg">
             <p className="my-14">
-            {book.genre}
+            {game.category}
             </p>
             </td>
 
         <td>
           <div className="flex flex-col  justify-center gap-3">
             <Link
-              to={`/book-details/${book?._id}`}
+              to={`/game-details/${game?.id}`}
               className="btn text-[11px] h-8 sm:text-md p-1.5 sm:p-4 bg-secondary text-white ">
               Details
             </Link>
             <button className="btn text-[11px] h-8 sm:text-md p-1.5 bg-transparent"><a 
             target="_blank"
-            href="https://vidyaprabodhinicollege.edu.in/VPCCECM/ebooks/ENGLISH%20LITERATURE/Harry%20potter/(Book%207)%20Harry%20Potter%20And%20The%20Deathly%20Hallows.pdf">Read</a></button>
+            href={game.downloadLink}>Download</a></button>
           </div>
         </td>
       </tr>
     </tbody>
+
   );
 };
 

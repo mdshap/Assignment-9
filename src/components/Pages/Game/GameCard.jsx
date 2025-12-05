@@ -1,5 +1,9 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import {motion, AnimatePresence} from "framer-motion";
+import { AuthContext } from "../../Authentication/AuthContext";
+import Loader from "../../Loader";
+
 
 const GameCard = ({ game }) => {
   const r = Math.max(0, Math.min(5, Math.round(game?.ratings)));
@@ -7,9 +11,20 @@ const GameCard = ({ game }) => {
 
 
   return (
-    <article className="w-full max-w-[350px] bg-white  rounded-xl shadow-md overflow-hidden transform transition hover:-translate-y-1 hover:shadow-xl">
+      
+    <div className="w-full max-w-[350px] bg-white  rounded-xl shadow-md overflow-hidden transform transition hover:-translate-y-1 hover:shadow-xl">
+      <motion.div
+      animate={{ rotate: 360 }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+                duration: 0.8,
+                delay: 0.5,
+                ease: [0, 0.71, 0.2, 1.01],
+            }}
+      >
       <div
-        className="h-80 bg-center bg-cover"
+        className="h-120 bg-center bg-cover"
         style={{ backgroundImage: `url(${game?.coverPhoto})` }}
       />
 
@@ -50,7 +65,9 @@ const GameCard = ({ game }) => {
           </button>
         </div>
       </div>
-    </article>
+      </motion.div>
+    </div>
+
   );
 };
 

@@ -6,13 +6,11 @@ import Loader from "../../Loader";
 import GameCard from "./GameCard";
 
 const PopularGames = () => {
-
   const [games, setGames] = useState([]);
-  const [gamesLoading, setGamesLoading] = useState(true)
+  const [gamesLoading, setGamesLoading] = useState(true);
   const [showAll, setShowAll] = useState(false);
 
-  const {loading } =use(AuthContext)
-
+  const { loading } = use(AuthContext);
 
   useEffect(() => {
     fetch("/data.json")
@@ -27,29 +25,35 @@ const PopularGames = () => {
       });
   }, []);
 
-  const handleShowAll = () =>{
-    setShowAll(!showAll)
-  }
+  const handleShowAll = () => {
+    setShowAll(!showAll);
+  };
 
-  if(loading || gamesLoading){
-    return(
-      <Loader></Loader>
-    )
+  if (loading || gamesLoading) {
+    return <Loader></Loader>;
   }
 
   return (
     <div className="">
-
-      <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
-        {games.slice(0,3).map((game) => (
-          <GameCard key={game.id} game={game}></GameCard>
-        ))}
-      </div>
+      {showAll ? <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
+        {games
+          .map((game) => (
+            <GameCard key={game.id} game={game} />
+          ))}
+      </div> : <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center">
+        {[...games]
+          .sort((a, b) => b.ratings - a.ratings)
+          .slice(0, 3)
+          .map((game) => (
+            <GameCard key={game.id} game={game} />
+          ))}
+      </div>}
       
+
       <div className="w-full flex justify-center mt-5">
-        <button 
-        onClick={handleShowAll}
-        className="btn btn-ghost mx-auto">{ showAll ? 'Show Less' : 'Show All'}</button>
+        <button onClick={handleShowAll} className="btn btn-ghost mx-auto">
+          {showAll ? "Show Less" : "Show All"}
+        </button>
       </div>
     </div>
   );
