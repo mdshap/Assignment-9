@@ -2,6 +2,7 @@ import React from "react";
 import Banner from "./Banner";
 import PopularGames from "../Game/PopularGames";
 import Newsletter from "./Newsletter";
+import Footer from "../../Layouts/Footer";
 
 const Home = () => {
   return (

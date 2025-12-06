@@ -1,8 +1,7 @@
-import React, { use } from "react";
+import React from "react";
 import { Link } from "react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { AuthContext } from "../../Authentication/AuthContext";
-import Loader from "../../Loader";
+
 
 const GameCard = ({ game }) => {
   const r = Math.max(0, Math.min(5, Math.round(game?.ratings)));
@@ -14,9 +13,7 @@ const GameCard = ({ game }) => {
           scale: 1.05,
           boxShadow: "0px 10px 20px rgba(0,0,0,0.15)",
         }}
-        transition={{ type: "spring", stiffness: 300 }}
         className="w-full max-w-[350px] bg-white  rounded-xl shadow-md overflow-hidden transform transition hover:-translate-y-1 hover:shadow-xl"
-        animate={{ rotate: 360 }}
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{

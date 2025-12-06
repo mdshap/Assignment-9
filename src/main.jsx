@@ -8,11 +8,11 @@ import Register from "./components/Pages/UserManagement/Register.jsx";
 import Home from "./components/Pages/Home/Home.jsx";
 import PrivateRoute from "./components/Privateroute/PrivateRoute.jsx";
 import GameDetails from "./components/Pages/Game/GameDetails.jsx";
-import Profile from "./components/Pages/UserManagement/Profile.jsx";
 import AuthProvider from "./components/Authentication/AuthProvider.jsx";
 import ErrorPage from "./components/Pages/ErrorPage.jsx";
 import AllGames from "./components/Pages/Game/AllGames.jsx";
 import UserInformation from "./components/Pages/UserManagement/UserInformation.jsx";
+import ForgotPassword from "./components/Pages/UserManagement/ForgetPassword.jsx";
 
 const routes = createBrowserRouter([
   {
@@ -30,6 +30,10 @@ const routes = createBrowserRouter([
       {
         path: "register",
         Component: Register,
+      },
+      {
+        path: 'forget-password',
+        Component: ForgotPassword,
       },
       {
         path: "all-games",

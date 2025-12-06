@@ -60,7 +60,6 @@ const GameDetails = () => {
       <div className="max-w-7xl mx-auto px-0 md:px-6 lg:px-8">
         <AnimatePresence>
         <motion.div
-      animate={{ rotate: 360 }}
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{

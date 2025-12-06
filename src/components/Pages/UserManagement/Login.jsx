@@ -7,10 +7,17 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../../Authentication/AuthContext";
 
 const Login = () => {
-  const { user, signInUser, setRegisterLoading, setLoading, signInWithGoogle } =
-    use(AuthContext);
+  const {
+    user,
+    signInUser,
+    signOutUser,
+    setRegisterLoading,
+    setLoading,
+    signInWithGoogle,
+  } = use(AuthContext);
   const [showPass, setShowPass] = useState(false);
   const [errorLogin, setErrorLogin] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleGoogleSignIn = () => {
     signInWithGoogle()
@@ -32,6 +39,17 @@ const Login = () => {
 
     signInUser(email, password)
       .then((result) => {
+        if (!result.user.emailVerified) {
+          setLoading(false);
+          signOutUser();
+          toast.error("Please verify your email to Login", {
+            style: {
+              background: "#ff4d4d",
+              color: "white",
+            },
+          });
+          return;
+        }
         toast.success("Successfully Logged in!");
         justLoggedInRef.current = true;
         console.log("Logged In:", result.user);
@@ -91,6 +109,7 @@ const Login = () => {
                   required
                   type="email"
                   name="email"
+                  onChange={(e) => setEmail(e.target.value)}
                   className="input input-bordered w-full placeholder-gray-400"
                   placeholder="Email"
                 />
@@ -126,12 +145,19 @@ const Login = () => {
                 Login
               </button>
 
+              <Link
+                to="/forget-password"
+                state={{ email }}
+                className="text-sm underline text-center text-red-400">
+                Forgot password?
+              </Link>
+
               <div className="text-center text-sm text-gray-500">OR</div>
             </form>
             <button
               type="button"
               onClick={handleGoogleSignIn}
-              className="w-full px-4 py-2 rounded-lg bg-white text-gray-800 border border-gray-200 flex items-center justify-center gap-3 hover:shadow-md transition">
+              className="w-full px-4 py-2 rounded-lg bg-white text-gray-800 btn border border-gray-200 flex items-center justify-center gap-3 hover:shadow-md transition">
               <svg
                 width="18"
                 height="18"
@@ -157,7 +183,7 @@ const Login = () => {
             </button>
             <Link
               to="/register"
-              className="mx-auto text-cyan-600 hover:text-blue-400">
+              className="mx-auto btn p-2 border w-full text-center rounded-md mt-2 bg-gray-500/20 border-blue-400 text-blue-400 hover:text-blue-400">
               Don't Have An Account? Create One
             </Link>
           </div>

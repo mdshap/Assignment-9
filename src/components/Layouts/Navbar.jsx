@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { use } from "react";
 import { Link, NavLink } from "react-router";
 
@@ -36,6 +36,14 @@ const Navbar = () => {
           data-tooltip-id="my-tooltip"
           data-tooltip-content="All available books in the website">
           All Games
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/profile"
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content="All available books in the website">
+          My Profile
         </NavLink>
       </li>
       {user ? (
@@ -78,43 +86,25 @@ const Navbar = () => {
             onClick={() => {
               setNavOpen(!navOpen);
             }}>
-              {navOpen ? <div
+            <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost px-2 lg:hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 cursor-pointer"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-            </div> : <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost px-2 lg:hidden">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 cursor-pointer"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 cursor-pointer"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
             </div>
-}
-            
+
             <ul
               tabIndex="-1"
               className="menu menu-lg dropdown-content bg-base-100 rounded-box z-1 mt-3 w-60 h-45 p-2 shadow">
@@ -138,15 +128,14 @@ const Navbar = () => {
           {user ? (
             <div className="flex gap-2 justify-center items-center">
               <Link to="/profile">
-              <img
-    
-                className="rounded-full cursor-pointer object-cover w-10 h-10"
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content={user?.displayName}
-                src={`${user?.photoURL}`}
-                alt="user_img"
-                title={`User: ${user?.displayName}`}
-              />
+                <img
+                  className="rounded-full cursor-pointer object-cover w-10 h-10"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={user?.displayName}
+                  src={`${user?.photoURL}`}
+                  alt="user_img"
+                  title={`User: ${user?.displayName}`}
+                />
               </Link>
               <a
                 onClick={handleSignOut}

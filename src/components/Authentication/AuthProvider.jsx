@@ -4,6 +4,8 @@ import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   onAuthStateChanged,
+  sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -14,6 +16,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { AuthContext } from "./AuthContext";
 import { auth } from "../../firebase.config";
+import toast from "react-hot-toast";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -26,6 +29,10 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
+        sendEmailVerification(result.user).then(() => {
+          toast.success("Please Verify Your Email");
+        });
+
         return updateProfile(result.user, {
           displayName: name,
           photoURL: photoURL,
@@ -50,6 +57,27 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+  const resetPassword = (email) => {
+    setLoading(true);
+    return sendPasswordResetEmail(auth, email).finally(() => setLoading(false));
+  };
+
+  const updateUserProfile = (name, photo) => {
+    setLoading(true);
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    })
+      .then(() => {
+        setLoading(false);
+        return auth.currentUser;
+      })
+      .catch((err) => {
+        setLoading(false);
+        throw err;
+      });
+  };
+
   const signOutUser = () => {
     return signOut(auth);
   };
@@ -70,8 +98,10 @@ const AuthProvider = ({ children }) => {
     signInUser,
     signInWithGoogle,
     signOutUser,
+    resetPassword,
     user,
     setUser,
+    updateUserProfile,
     loading,
     setLoading,
     registerLoading,

@@ -1,27 +1,30 @@
-
 import React, { use, useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import { AuthContext } from "../../Authentication/AuthContext";
 import { FaCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
+import toast from "react-hot-toast";
 
-const  UserInformation = ({ onSave, className = "" }) => {
-  const { user } = use(AuthContext);
+const UserInformation = ({ className = "" }) => {
+  const { user, updateUserProfile } = use(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [form, setForm] = useState({
     displayName: "",
     photoURL: "",
-    phoneNumber: "",
   });
+
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
+    if (!user) return;
+    
+  setTimeout(() => {
     setForm({
       displayName: user.displayName || "",
       photoURL: user.photoURL || "",
-      phoneNumber: user.phoneNumber || "",
     });
+  }, 0);
+  
   }, [user]);
 
   const openModal = () => {
@@ -38,31 +41,16 @@ const  UserInformation = ({ onSave, className = "" }) => {
     setForm((s) => ({ ...s, [name]: value }));
   }
 
-  async function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setMessage(null);
     setSaving(true);
-    const updates = {
-      displayName: form.displayName?.trim() || null,
-      photoURL: form.photoURL?.trim() || null,
-      phoneNumber: form.phoneNumber?.trim() || null,
-    };
-
-    try {
-      if (onSave) {
-        await onSave(updates);
-      }
-      setMessage({
-        type: "success",
-        text: "Saved (UI only). AuthProvider should persist it.",
-      });
-      setTimeout(() => closeModal(), 700);
-    } catch (err) {
-      setMessage({ type: "error", text: err?.message || "Save failed" });
-      setSaving(false);
-    }
-  }
-
+    const name = form.displayName?.trim();
+    const photo = form.photoURL?.trim();
+    updateUserProfile(name, photo).then(() =>
+      toast.success("Updated Successfully")
+    );
+  };
 
   return (
     <div className={`max-w-4xl mx-auto p-4 ${className}`}>
@@ -84,9 +72,7 @@ const  UserInformation = ({ onSave, className = "" }) => {
             <div className="text-lg font-semibold text-gray-900">
               {user?.displayName}
             </div>
-            <div className="text-sm text-gray-500">
-              {user.email || "No email"}
-            </div>
+            <div className="text-sm text-gray-500">{user?.email}</div>
           </div>
 
           <div className="mt-2">
@@ -101,17 +87,19 @@ const  UserInformation = ({ onSave, className = "" }) => {
         <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="p-4 border border-blue-600 rounded-lg">
             <div className="text-xs text-gray-400">Name</div>
-            <div className="mt-1 text-blue-600 font-medium">{user?.displayName}</div>
+            <div className="mt-1 text-blue-600 font-medium">
+              {user?.displayName}
+            </div>
           </div>
 
           <div className="p-4 border border-green-600 rounded-lg">
             <div className="text-xs text-gray-400">Email</div>
-            <div className="mt-1 text-green-600 font-medium">{user.email || "—"}</div>
+            <div className="mt-1 text-green-600 font-medium">{user?.email}</div>
           </div>
 
           <div className="p-4 border rounded-lg">
             <div className="text-xs text-gray-400">Phone</div>
-            <div className="mt-1">{user.phoneNumber || "None"}</div>
+            <div className="mt-1">{user?.phoneNumber || "None"}</div>
           </div>
 
           <div className="p-4 border rounded-lg">
@@ -132,8 +120,7 @@ const  UserInformation = ({ onSave, className = "" }) => {
           <div className="p-4 border rounded-lg sm:col-span-2">
             <div className="text-xs text-gray-400">Sign in status</div>
             <div className="mt-1 text-sm text-gray-600">
-              Created:{" "}
-              {user.metadata?.creationTime || user.metadata?.createdAt}
+              Created: {user.metadata?.creationTime || user.metadata?.createdAt}
             </div>
             <div className="text-sm text-gray-600">
               Last Sign-in:{" "}
@@ -189,17 +176,6 @@ const  UserInformation = ({ onSave, className = "" }) => {
                   onChange={handleChange}
                   className="mt-1 block w-full border rounded-md px-3 py-2"
                 />
-                
-              </div>
-
-              <div>
-                <label className="text-xs text-gray-500">Phone number</label>
-                <input
-                  name="phoneNumber"
-                  value={form.phoneNumber}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border rounded-md px-3 py-2"
-                />
               </div>
 
               {message && (
@@ -231,5 +207,5 @@ const  UserInformation = ({ onSave, className = "" }) => {
       )}
     </div>
   );
-}
+};
 export default UserInformation;

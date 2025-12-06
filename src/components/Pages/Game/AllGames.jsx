@@ -1,5 +1,4 @@
 import React, { use, useEffect, useState } from "react";
-import { FaSortNumericDown, FaSortNumericDownAlt } from "react-icons/fa";
 import { AuthContext } from "../../Authentication/AuthContext";
 import Loader from "../../Loader";
 import TableBody from "./TableBody";
