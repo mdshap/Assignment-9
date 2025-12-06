@@ -5,7 +5,7 @@ A modern React-based authentication system using Firebase, implementing secure u
 ---
 
 ## 🔗 Live Demo
-👉 **Live URL:** https://resplendent-mermaid-7367ba.netlify.app/profile
+👉 **Live URL:** https://resplendent-mermaid-7367ba.netlify.app
 
 ---
 
