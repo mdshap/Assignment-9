@@ -38,22 +38,23 @@ const Navbar = () => {
           All Games
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/profile"
-          data-tooltip-id="my-tooltip"
-          data-tooltip-content="All available books in the website">
-          My Profile
-        </NavLink>
-      </li>
+
       {user ? (
-        ""
+        <li>
+                <NavLink
+                  to="/profile"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="All available books in the website">
+                  My Profile
+                </NavLink>
+              </li>
       ) : (
         <>
           {loading ? (
             ""
           ) : (
             <>
+              
               <li>
                 <NavLink
                   to="/register"

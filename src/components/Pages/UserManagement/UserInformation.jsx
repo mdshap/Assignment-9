@@ -1,5 +1,6 @@
 import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../../Authentication/AuthContext";
+import {motion } from "framer-motion"
 import { FaCheckCircle } from "react-icons/fa";
 import { RxCrossCircled } from "react-icons/rx";
 import toast from "react-hot-toast";
@@ -24,7 +25,7 @@ const UserInformation = ({ className = "" }) => {
       photoURL: user.photoURL || "",
     });
   }, 0);
-  
+
   }, [user]);
 
   const openModal = () => {
@@ -78,7 +79,7 @@ const UserInformation = ({ className = "" }) => {
           <div className="mt-2">
             <button
               onClick={openModal}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-lg shadow hover:brightness-95 transition">
+              className="inline-flex items-center gap-2 px-4 py-2 bg-secondary text-white rounded-lg btn shadow hover:brightness-95 transition">
               Edit profile
             </button>
           </div>

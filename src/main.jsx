@@ -22,22 +22,27 @@ const routes = createBrowserRouter([
       {
         index: true,
         Component: Home,
+        handle: { title: "Home | Game Hub" },
       },
       {
         path: "login",
         Component: Login,
+        handle: { title: "Login | Game Hub" },
       },
       {
         path: "register",
         Component: Register,
+        handle: { title: "Register | Game Hub" },
       },
       {
         path: 'forget-password',
         Component: ForgotPassword,
+        handle: { title: "Reset Password | Game Hub" },
       },
       {
         path: "all-games",
-        Component: AllGames
+        Component: AllGames,
+        handle: { title: "All Games | Game Hub" },
       },
       {
         path: "game-details/:id",
@@ -46,6 +51,7 @@ const routes = createBrowserRouter([
             <GameDetails />
           </PrivateRoute>
         ),
+        handle: { title: "Game Details | Game Hub" },
       },
       {
         path: "profile",
@@ -54,6 +60,7 @@ const routes = createBrowserRouter([
             <UserInformation/>
           </PrivateRoute>
         ),
+        handle: { title: "Profile | Game Hub" },
       },
       {
     path: '*',
